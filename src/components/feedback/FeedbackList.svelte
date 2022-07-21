@@ -1,5 +1,5 @@
 <script>
-import { fade, scale } from 'svelte/transition';
+import { scale } from 'svelte/transition';
 import FeedbackItem from "./FeedbackItem.svelte";
 export let feedbacks = [];
 
