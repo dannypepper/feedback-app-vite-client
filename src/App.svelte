@@ -55,10 +55,10 @@ const deleteFeedback = (e) => {
     <h2>Hello</h2>
   </a>
   <h3>{counter}</h3>
-  {#if averageRating}
+  {#if counter}
     <h3>{averageRating}</h3>
+    <FeedbackStats {counter} {averageRating} />
   {/if}
-  <FeedbackStats {counter} {averageRating} />
 
   <FeedbackList {feedbacks} on:delete-feedback={deleteFeedback} />
 </main>
