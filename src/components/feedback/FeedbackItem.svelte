@@ -1,6 +1,6 @@
 <script>
 import { createEventDispatcher } from 'svelte';
-import Card from "./Card.svelte";
+import Card from "../card/Card.svelte";
 
 export let feedback = {};
 

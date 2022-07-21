@@ -1,7 +1,16 @@
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+  </style>
+</svelte:head>
+
 <script>
+import "@fontsource/el-messiri";
 import { LoremIpsum } from "lorem-ipsum";
 
-import FeedbackList from "./components/FeedbackList.svelte";
+import FeedbackList from "./components/feedback/FeedbackList.svelte";
+import FeedbackStats from "./components/feedback/FeedbackStats.svelte";
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -30,7 +39,9 @@ const createFeedbackList = (length) => {
 
 let feedbacks = createFeedbackList(10);
 
-$: count = feedbacks.length;
+$: counter = feedbacks.length;
+$: averageRating = Math.round(feedbacks.reduce(
+  (a, feedback) => a + feedback.rating, 0) / feedbacks.length * 10) / 10;
 
 const deleteFeedback = (e) => {
   const feedbackId = e.detail;
@@ -43,6 +54,11 @@ const deleteFeedback = (e) => {
   <a href="/">
     <h2>Hello</h2>
   </a>
-  <h3>{count}</h3>
-  <FeedbackList {feedbacks} on:delete-feedback={deleteFeedback}/>
+  <h3>{counter}</h3>
+  {#if averageRating}
+    <h3>{averageRating}</h3>
+  {/if}
+  <FeedbackStats {counter} {averageRating} />
+
+  <FeedbackList {feedbacks} on:delete-feedback={deleteFeedback} />
 </main>
