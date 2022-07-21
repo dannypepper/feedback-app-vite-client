@@ -10,6 +10,8 @@ let minDescriptionLength = 10;
 let maxDescriptionLength = 144;
 let message;
 
+const handleSelect = e => rating = e.detail
+
 const handleInput = () => {
   if (description.trim().length <= minDescriptionLength) {
     buttonDisabled = true;
@@ -27,7 +29,7 @@ const handleInput = () => {
     <h2>How would you rate your service with us?</h2>
   </header>
   <form action="submit">
-    <RatingSelect />
+    <RatingSelect on:rating-select={handleSelect}/>
     <div class="input-group">
       <input
         type="text"
