@@ -11,15 +11,17 @@ const deleteFeedback = (feedbackId) => {
 };
 </script>
 
-<Card>
-  <div class="num-display">
-    {feedback.rating}
-  </div>
-  <button class="close" on:click="{() => deleteFeedback(feedback.id)}">X</button>
-  <p class="description">
-    {feedback.description}
-  </p>
-</Card>
+<div class="card-container">
+  <Card>
+    <div class="num-display">
+      {feedback.rating}
+    </div>
+    <button class="close" on:click="{() => deleteFeedback(feedback.id)}">X</button>
+    <p class="description">
+      {feedback.description}
+    </p>
+  </Card>
+</div>
 
 <style>
 .num-display {
@@ -44,5 +46,9 @@ const deleteFeedback = (feedbackId) => {
   position: absolute;
   right: 0px;
   top: 0px;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
 }
 </style>

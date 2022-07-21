@@ -18,7 +18,8 @@ const handleSelect = e => rating = e.detail;
 
 const handleInput = () => {
   descriptionLength = description.trim().length;
-  if (descriptionLength <= minDescriptionLength) {
+  console.log({descriptionLength: descriptionLength});
+  if (descriptionLength < minDescriptionLength || descriptionLength > maxDescriptionLength) {
     buttonDisabled = true;
     message = `Description must be between ${minDescriptionLength} and ${maxDescriptionLength} characters`
   }
