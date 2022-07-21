@@ -136,22 +136,19 @@ const onChange = (e) => {
 .rating li {
   color: var(--main-background-color);
   position: relative;
-  background: #FD997F;
+  background: #DDDDDD;
   width: 30px;
   height: 30px;
   padding: 10px;
   text-align: center;
   border-radius: 50%;
-  font-size: 19px;
-  border: 1px #eee solid;
   transition: 0.3s;
   padding: 15px;
 }
 
 .rating li label {
-
   position:absolute;
-  top: 40px;
+  top: 39px;
   left: 30px;
   right: 0;
   bottom: 0;
@@ -161,7 +158,7 @@ const onChange = (e) => {
   border-radius: 50%;
   transform: translate(-50%, -65%);
   cursor: pointer;
-  padding: 35px;
+  padding: 30px;
   font-size: 1.5rem;
 }
 
