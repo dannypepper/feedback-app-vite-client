@@ -1,19 +1,24 @@
 <script>
+import {v4 as uuidv4} from 'uuid';
+import { createEventDispatcher } from 'svelte';
 import Card from "../card/Card.svelte";
 import Button from "../button/Button.svelte";
 import RatingSelect from "../select/RatingSelect.svelte";
 
 let description = '';
+let descriptionLength = 0;
 let rating = 10;
 let buttonDisabled = true;
 let minDescriptionLength = 10;
 let maxDescriptionLength = 144;
 let message;
+let dispatch = createEventDispatcher();
 
-const handleSelect = e => rating = e.detail
+const handleSelect = e => rating = e.detail;
 
 const handleInput = () => {
-  if (description.trim().length <= minDescriptionLength) {
+  descriptionLength = description.trim().length;
+  if (descriptionLength <= minDescriptionLength) {
     buttonDisabled = true;
     message = `Description must be between ${minDescriptionLength} and ${maxDescriptionLength} characters`
   }
@@ -22,13 +27,25 @@ const handleInput = () => {
     message = null;
   }
 };
+
+const handleSubmit = () => {
+  descriptionLength = description.trim().length;
+  if (descriptionLength > minDescriptionLength && descriptionLength < maxDescriptionLength) {
+    const newFeedback = {
+      id: uuidv4(),
+      description: description,
+      rating: +rating,
+    }
+    dispatch('create-feedback', newFeedback);    
+  }
+};
 </script>
 
 <Card>
   <header>
     <h2>How would you rate your service with us?</h2>
   </header>
-  <form action="submit">
+  <form action="submit" on:submit|preventDefault={handleSubmit}>
     <RatingSelect on:rating-select={handleSelect}/>
     <div class="input-group">
       <input
@@ -44,7 +61,7 @@ const handleInput = () => {
     {#if message}
       <div class="message">{message}</div>
     {/if}
-    <div class="description-length">{description.trim().length}/144</div>
+    <div class="description-length">{descriptionLength}/144</div>
   </div>
   </form>
 </Card>
