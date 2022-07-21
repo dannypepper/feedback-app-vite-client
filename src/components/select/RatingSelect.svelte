@@ -134,8 +134,9 @@ const onChange = (e) => {
 }
 
 .rating li {
+  color: var(--main-background-color);
   position: relative;
-  background: #f4f4f4;
+  background: #FD997F;
   width: 30px;
   height: 30px;
   padding: 10px;
@@ -144,22 +145,30 @@ const onChange = (e) => {
   font-size: 19px;
   border: 1px #eee solid;
   transition: 0.3s;
+  padding: 15px;
 }
 
 .rating li label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50px;
-  height: 50px;
+
+  position:absolute;
+  top: 40px;
+  left: 30px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 40px;
+  height: 40px; */
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -65%);
   cursor: pointer;
+  padding: 35px;
 }
 
-.rating li:hover {
-  background: #ff6a95;
+li:hover {
   color: #fff;
+  background-color: #FD997F;
 }
 
 /* Make actual radio select invisible */
@@ -169,7 +178,7 @@ const onChange = (e) => {
 
 /* Use the sibling select */
 [type="radio"]:checked ~ label {
-  background: #ff6a95;
+  background: #FD997F;
   color: #fff;
 }
 </style>
