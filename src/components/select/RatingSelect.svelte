@@ -158,12 +158,11 @@ const onChange = (e) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 40px;
-  height: 40px; */
   border-radius: 50%;
   transform: translate(-50%, -65%);
   cursor: pointer;
   padding: 35px;
+  font-size: 1.5rem;
 }
 
 li:hover {
