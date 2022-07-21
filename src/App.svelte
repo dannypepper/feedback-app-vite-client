@@ -56,9 +56,7 @@ const deleteFeedback = (e) => {
     <h2>Hello</h2>
   </a>
   <FeedbackForm />
-  <h3>{counter}</h3>
   {#if counter}
-    <h3>{averageRating}</h3>
     <FeedbackStats {counter} {averageRating} />
   {/if}
 

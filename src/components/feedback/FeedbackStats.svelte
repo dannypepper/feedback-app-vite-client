@@ -10,7 +10,7 @@
 
 <style>
   .feedback-stats {
-    margin: 0 16px;
+    margin: 60px 16px 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;

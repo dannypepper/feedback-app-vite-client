@@ -131,6 +131,7 @@ const onChange = (e) => {
   justify-content: space-around;
   margin: 30px 0;
   list-style-type: none;
+  padding-left: 0px;
 }
 
 .rating li {

@@ -77,9 +77,9 @@ input {
 input:focus {
   outline: none;
 }
-.description {
+.message {
   padding-top: 10px;
   text-align: center;
-  color: rebeccapurple;
+  color: #FF99FF;
 }
 </style>
