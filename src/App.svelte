@@ -9,6 +9,7 @@
 import "@fontsource/el-messiri";
 import { LoremIpsum } from "lorem-ipsum";
 
+import FeedbackForm from "./components/feedback/FeedbackForm.svelte";
 import FeedbackList from "./components/feedback/FeedbackList.svelte";
 import FeedbackStats from "./components/feedback/FeedbackStats.svelte";
 
@@ -54,6 +55,7 @@ const deleteFeedback = (e) => {
   <a href="/">
     <h2>Hello</h2>
   </a>
+  <FeedbackForm />
   <h3>{counter}</h3>
   {#if counter}
     <h3>{averageRating}</h3>
