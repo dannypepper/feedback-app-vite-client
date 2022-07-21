@@ -7,12 +7,13 @@ let description = '';
 let rating = 10;
 let buttonDisabled = true;
 let minDescriptionLength = 10;
+let maxDescriptionLength = 144;
 let message;
 
 const handleInput = () => {
   if (description.trim().length <= minDescriptionLength) {
     buttonDisabled = true;
-    message = `Description must be at least ${minDescriptionLength} characters long`
+    message = `Description must be between ${minDescriptionLength} and ${maxDescriptionLength} characters`
   }
   else {
     buttonDisabled = false;
@@ -37,9 +38,12 @@ const handleInput = () => {
       >
       <Button disabled={buttonDisabled} type="submit">Send</Button>
     </div>
+  <div>
     {#if message}
       <div class="message">{message}</div>
     {/if}
+    <div class="description-length">{description.trim().length}/144</div>
+  </div>
   </form>
 </Card>
 
@@ -81,5 +85,10 @@ input:focus {
   padding-top: 10px;
   text-align: center;
   color: #FF99FF;
+}
+.description-length {
+  display: flex;
+  justify-content: end;
+  padding-right: 10px;
 }
 </style>
