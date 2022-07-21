@@ -44,7 +44,7 @@ $: counter = feedbacks.length;
 $: averageRating = Math.round(feedbacks.reduce(
   (a, feedback) => a + feedback.rating, 0) / feedbacks.length * 10) / 10;
 
-const createFeedback = (e) => {
+const addFeedback = (e) => {
   const newFeedback = e.detail;
   feedbacks = [...feedbacks, newFeedback]
 };
@@ -60,7 +60,7 @@ const deleteFeedback = (e) => {
   <a href="/">
     <h2>Hello</h2>
   </a>
-  <FeedbackForm on:create-feedback={createFeedback}/>
+  <FeedbackForm on:create-feedback={addFeedback}/>
   {#if counter}
     <FeedbackStats {counter} {averageRating} />
   {/if}

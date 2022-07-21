@@ -38,6 +38,7 @@ const handleSubmit = () => {
     }
     dispatch('create-feedback', newFeedback);    
   }
+  description = '';
 };
 </script>
 
