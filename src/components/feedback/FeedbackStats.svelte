@@ -3,7 +3,7 @@ import { FeedbackStore } from "../../stores";
 
 $: counter = $FeedbackStore.length;
 $: averageRating = Math.round($FeedbackStore.reduce(
-  (a, feedback) => a + feedback.rating, 0) / $FeedbackStore.length * 10) / 10 || 0;
+  (a, feedback) => a + feedback.rating, 0) / $FeedbackStore.length * 100) / 100 || 0;
 </script>
 
 <div class="feedback-stats">
