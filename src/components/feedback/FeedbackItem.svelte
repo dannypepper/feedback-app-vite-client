@@ -1,13 +1,13 @@
 <script>
-import { createEventDispatcher } from 'svelte';
+import { FeedbackStore } from '../../stores';
 import Card from "../card/Card.svelte";
 
 export let feedback = {};
 
-const dispatch = createEventDispatcher();
-
 const deleteFeedback = (feedbackId) => {
-  dispatch('delete-feedback', feedbackId);
+  FeedbackStore.update((feedbacks) => {
+    return feedbacks.filter((feedback) => feedback.id !== feedbackId);
+  });
 };
 </script>
 

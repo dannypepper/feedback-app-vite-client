@@ -1,12 +1,25 @@
 <script>
+// import { onMount, onDestroy } from 'svelte';
+import { FeedbackStore } from '../../stores.js'
 import { fade, scale } from 'svelte/transition';
 import FeedbackItem from "./FeedbackItem.svelte";
-export let feedbacks = [];
+// let feedbacks = [];
+
+// const unsubscribe = FeedbackStore.subscribe((data) => feedbacks = data);
+
+// onMount(() => {
+//   console.log('mounted');
+// });
+
+// onDestroy(() => {
+//   unsubscribe();
+// });
+
 
 </script>
 
-{#each feedbacks as feedback (feedback.id)}
+{#each $FeedbackStore as feedback (feedback.id)}
   <div in:fade="{{ duration: 420 }}" out:scale="{{ duration: 420 }}">
-    <FeedbackItem {feedback} on:delete-feedback />
+    <FeedbackItem {feedback} />
   </div>
 {/each}

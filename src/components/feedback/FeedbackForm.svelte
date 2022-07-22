@@ -1,9 +1,9 @@
 <script>
 import {v4 as uuidv4} from 'uuid';
-import { createEventDispatcher } from 'svelte';
 import Card from "../card/Card.svelte";
 import Button from "../button/Button.svelte";
 import RatingSelect from "../select/RatingSelect.svelte";
+import { FeedbackStore } from '../../stores.js';
 
 let description = '';
 let descriptionLength = 0;
@@ -12,13 +12,11 @@ let buttonDisabled = true;
 let minDescriptionLength = 10;
 let maxDescriptionLength = 144;
 let message;
-let dispatch = createEventDispatcher();
 
 const handleSelect = e => rating = e.detail;
 
 const handleInput = () => {
   descriptionLength = description.trim().length;
-  console.log({descriptionLength: descriptionLength});
   if (descriptionLength < minDescriptionLength || descriptionLength > maxDescriptionLength) {
     buttonDisabled = true;
     message = `Description must be between ${minDescriptionLength} and ${maxDescriptionLength} characters`
@@ -37,7 +35,9 @@ const handleSubmit = () => {
       description: description,
       rating: +rating,
     }
-    dispatch('create-feedback', newFeedback);    
+    FeedbackStore.update((feedbacks) => {
+      return [...feedbacks, newFeedback];
+    })   
   }
   description = '';
 };
